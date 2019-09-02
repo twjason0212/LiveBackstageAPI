@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="HelloWorld">
+        <s:complexType />
+      </s:element>
+      <s:element name="HelloWorldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAnchorReport">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="anchorId" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="PageSize" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="PageIndex" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAnchorReportResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getAnchorReportResult" type="tns:return_anchor_tip_record" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="return_anchor_tip_record">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="anchor_list" type="tns:ArrayOfDt_anchor_tip_record" />
+          <s:element minOccurs="1" maxOccurs="1" name="anchor_count" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="code" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfDt_anchor_tip_record">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="dt_anchor_tip_record" nillable="true" type="tns:dt_anchor_tip_record" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="dt_anchor_tip_record">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="identityid" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="anchor_id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="tipmoney_today" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="tipmoney_thismonth" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="tipmoney_lastmonth" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="tipmoney_total" type="s:decimal" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="EncryptionSoapHeader" type="tns:EncryptionSoapHeader" />
+      <s:complexType name="EncryptionSoapHeader">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+        </s:sequence>
+        <s:anyAttribute />
+      </s:complexType>
+      <s:element name="getAnchorInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IdentityId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="anchorId" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="PageSize" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="PageIndex" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAnchorInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getAnchorInfoResult" type="tns:ArrayOfDt_anchor_tip_record" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="HelloWorldSoapIn">
+    <wsdl:part name="parameters" element="tns:HelloWorld" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSoapOut">
+    <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAnchorReportSoapIn">
+    <wsdl:part name="parameters" element="tns:getAnchorReport" />
+  </wsdl:message>
+  <wsdl:message name="getAnchorReportSoapOut">
+    <wsdl:part name="parameters" element="tns:getAnchorReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAnchorReportEncryptionSoapHeader">
+    <wsdl:part name="EncryptionSoapHeader" element="tns:EncryptionSoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="getAnchorInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:getAnchorInfo" />
+  </wsdl:message>
+  <wsdl:message name="getAnchorInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:getAnchorInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAnchorInfoEncryptionSoapHeader">
+    <wsdl:part name="EncryptionSoapHeader" element="tns:EncryptionSoapHeader" />
+  </wsdl:message>
+  <wsdl:portType name="LiveAfterWebServiceSoap">
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldSoapIn" />
+      <wsdl:output message="tns:HelloWorldSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAnchorReport">
+      <wsdl:input message="tns:getAnchorReportSoapIn" />
+      <wsdl:output message="tns:getAnchorReportSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAnchorInfo">
+      <wsdl:input message="tns:getAnchorInfoSoapIn" />
+      <wsdl:output message="tns:getAnchorInfoSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="LiveAfterWebServiceSoap" type="tns:LiveAfterWebServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAnchorReport">
+      <soap:operation soapAction="http://tempuri.org/getAnchorReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getAnchorReportEncryptionSoapHeader" part="EncryptionSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAnchorInfo">
+      <soap:operation soapAction="http://tempuri.org/getAnchorInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getAnchorInfoEncryptionSoapHeader" part="EncryptionSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="LiveAfterWebServiceSoap12" type="tns:LiveAfterWebServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap12:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAnchorReport">
+      <soap12:operation soapAction="http://tempuri.org/getAnchorReport" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getAnchorReportEncryptionSoapHeader" part="EncryptionSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAnchorInfo">
+      <soap12:operation soapAction="http://tempuri.org/getAnchorInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getAnchorInfoEncryptionSoapHeader" part="EncryptionSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="LiveAfterWebService">
+    <wsdl:port name="LiveAfterWebServiceSoap" binding="tns:LiveAfterWebServiceSoap">
+      <soap:address location="http://52.184.35.231:8023/LiveAfterWebService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="LiveAfterWebServiceSoap12" binding="tns:LiveAfterWebServiceSoap12">
+      <soap12:address location="http://52.184.35.231:8023/LiveAfterWebService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

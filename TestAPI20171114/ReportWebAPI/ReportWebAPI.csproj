@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3189FE46-38A5-4A94-A684-31C220CE9705}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ReportWebAPI</RootNamespace>
+    <AssemblyName>ReportWebAPI</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\LotteryTicketProject.Web\bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ReportAfterHelper.cs" />
+    <Compile Include="ReportChangeModel\ReportAgent.cs" />
+    <Compile Include="ReportChangeModel\ReportGroup.cs" />
+    <Compile Include="ReportChangeModel\ReportHistory.cs" />
+    <Compile Include="ReportChangeModel\ReportPlatform.cs" />
+    <Compile Include="ReportChangeModel\ReportIntegrated.cs" />
+    <Compile Include="ReportChangeModel\ReportLottery.cs" />
+    <Compile Include="ReportChangeModel\ReportMembers.cs" />
+    <Compile Include="ReportChangeModel\ReportNewPays.cs" />
+    <Compile Include="ReportChangeModel\ReportSource.cs" />
+    <Compile Include="ReportCommon\Mapping.cs" />
+    <Compile Include="ReportConvert\ConvertReport.cs" />
+    <Compile Include="ReportHelper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReportModel\AfterParameters.cs" />
+    <Compile Include="ReportModel\LiveParameters.cs" />
+    <Compile Include="ReportViewModel\AgencyHeader.cs" />
+    <Compile Include="ReportViewModel\AgentReport.cs" />
+    <Compile Include="ReportViewModel\AgentsReport.cs" />
+    <Compile Include="ReportViewModel\dt_anchor_tip_record.cs" />
+    <Compile Include="ReportViewModel\AnchorsReport.cs" />
+    <Compile Include="ReportViewModel\AwardMoneyData.cs" />
+    <Compile Include="ReportModel\BeforeParameters.cs" />
+    <Compile Include="ReportViewModel\DealTime.cs" />
+    <Compile Include="ReportViewModel\GradeReport.cs" />
+    <Compile Include="ReportViewModel\IntegratedReport.cs" />
+    <Compile Include="ReportViewModel\LotteryReport.cs" />
+    <Compile Include="ReportViewModel\MembersReport.cs" />
+    <Compile Include="ReportViewModel\PlatformReport.cs" />
+    <Compile Include="ReportViewModel\NewPaysReport.cs" />
+    <Compile Include="ReportViewModel\ProfitLossData.cs" />
+    <Compile Include="ReportViewModel\RechargeMoneyHistory.cs" />
+    <Compile Include="ReportModel\ResultInfoT.cs" />
+    <Compile Include="ReportViewModel\SourceReport.cs" />
+    <Compile Include="ReportViewModel\UsersHistoryReport.cs" />
+    <Compile Include="ReportViewModel\WinMoneyInTop.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

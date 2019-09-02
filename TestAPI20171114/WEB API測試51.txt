@@ -1,0 +1,33 @@
+-------------------線上登入
+POST http://51.twtest88.com:8002/api HTTP/1.1
+Host: 51.twtest88.com:8002
+Connection: keep-alive
+Content-Length: 95
+Origin: http://51.twtest88.com:8002
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36
+Content-Type: application/x-www-form-urlencoded
+Accept: */*
+Referer: http://51.twtest88.com:8002
+Accept-Encoding: gzip, deflate
+Accept-Language: zh-TW,zh;q=0.9,en-US;q=0.8,en;q=0.7
+
+Action=Login&Username=testgg&Password=ce55312a6c3f30c997464069a63c30ed&Type=Hash
+
+
+
+-----荷官查詢
+POST http://51.twtest88.com:8002/api HTTP/1.1
+Host: 51.twtest88.com:8002
+Connection: keep-alive
+Content-Length: 95
+Origin: http://51.twtest88.com:8002
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36
+Content-Type: application/x-www-form-urlencoded
+Accept: */*
+Referer: http://51.twtest88.com:8002
+Accept-Encoding: gzip, deflate
+Accept-Language: zh-TW,zh;q=0.9,en-US;q=0.8,en;q=0.7
+Cookie: ASP.NET_SessionId=0e5qyv3fd3hitw5u5aovdkmk; 
+
+Action=getDealer&Code=&UserName=小和&StartTime=2017-01-01&EndTime=2017-11-22&PageSize
+=20&PageIndex=0

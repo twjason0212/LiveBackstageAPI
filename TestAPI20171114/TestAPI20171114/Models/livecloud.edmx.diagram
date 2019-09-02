@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9e014d48d6c34a96bbcfdf7295795bfe" Name="Diagram1">
+        <EntityTypeShape EntityType="livecloudModel.AnchorsClockLog" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="livecloudModel.AnchorsWorkLog" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="livecloudModel.AnchorsWorkTotal" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="livecloudModel.dt_AdminBroadcastLog" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="livecloudModel.dt_AnchorLiveStatus" Width="1.5" PointX="2.75" PointY="4.75" />
+        <EntityTypeShape EntityType="livecloudModel.dt_dealer" Width="1.5" PointX="4.75" PointY="3.75" />
+        <EntityTypeShape EntityType="livecloudModel.dt_live" Width="1.5" PointX="6.75" PointY="0.75" />
+        <EntityTypeShape EntityType="livecloudModel.dt_liveList" Width="1.5" PointX="6.75" PointY="3.75" />
+        <EntityTypeShape EntityType="livecloudModel.dt_liveOpenRecord" Width="1.5" PointX="8.75" PointY="0.75" />
+        <EntityTypeShape EntityType="livecloudModel.dt_liveTable" Width="1.5" PointX="0.75" PointY="8.75" />
+        <EntityTypeShape EntityType="livecloudModel.dt_ManageLog" Width="1.5" PointX="2.75" PointY="8.75" />
+        <EntityTypeShape EntityType="livecloudModel.dt_Manager" Width="1.5" PointX="8.75" PointY="4.75" />
+        <EntityTypeShape EntityType="livecloudModel.dt_ManagerRole" Width="1.5" PointX="4.75" PointY="8.75" />
+        <EntityTypeShape EntityType="livecloudModel.dt_ManualReview" Width="1.5" PointX="6.75" PointY="8.75" />
+        <EntityTypeShape EntityType="livecloudModel.dt_SensitiveSentences" Width="1.5" PointX="8.75" PointY="8.75" />
+        <EntityTypeShape EntityType="livecloudModel.dt_SensitiveWords" Width="1.5" PointX="10.75" PointY="0.75" />
+        <EntityTypeShape EntityType="livecloudModel.dt_SystemBarrage" Width="1.5" PointX="10.75" PointY="4.75" />
+        <EntityTypeShape EntityType="livecloudModel.dt_SystemBarrageLog" Width="1.5" PointX="10.75" PointY="8.75" />
+        <EntityTypeShape EntityType="livecloudModel.UsersBroadcastLog" Width="1.5" PointX="8.75" PointY="12.25" />
+        <EntityTypeShape EntityType="livecloudModel.dt_SystemBarrageTimes" Width="1.5" PointX="0.75" PointY="11.875" />
+        <EntityTypeShape EntityType="livecloudModel.ChatMessageBlockLog" Width="1.5" PointX="6.75" PointY="12.5" />
+        <EntityTypeShape EntityType="livecloudModel.dt_UserBarrageNoSpeak" Width="1.5" PointX="2.75" PointY="11.875" />
+        <EntityTypeShape EntityType="livecloudModel.dt_BlackWords" Width="1.5" PointX="11.375" PointY="11.75" />
+        <EntityTypeShape EntityType="livecloudModel.dt_AllowAccessIPList" Width="1.5" PointX="13.375" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

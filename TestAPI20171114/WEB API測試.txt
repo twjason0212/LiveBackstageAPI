@@ -1,0 +1,167 @@
+---------------本地登入
+POST http://localhost:55183/api HTTP/1.1
+Host: localhost:55183
+Origin: http://localhost:55183
+Content-Type: application/x-www-form-urlencoded
+Accept: */*
+Cookie: ASP.NET_SessionId=dpoulrvrwk4dgeeo0z0bhgni; path=/; HttpOnly
+Referer: http://localhost:55183
+
+Action=Login&Username=testgg&Password=ce55312a6c3f30c997464069a63c30ed&Type=Hash
+Action=setLiveBroadCast&Type=add&Gameid=0101&starttime=2018-02-02 10:30:00&EndTime=2018-02-02 20:00:00&content=t1818ab
+Action=getAnchorTimeList&PageSize=5&pageIndex=0
+Action=getAnchorReport&PageSize=20&PageIndex=0
+Action=getManualReviewList&StartTime=2017-12-20&EndTime=2017-12-31&PageSize=20&PageIndex=0
+
+Action=delWordsManage&ID=10
+Action=delWordsManage&ID=2,11,13
+Action=delSystemBarrage&ID=4,5
+
+POST http://localhost:55183/api HTTP/1.1
+Host: localhost:55183
+Origin: http://localhost:55183
+Content-Type: application/x-www-form-urlencoded
+Accept: */*
+Cookie: ASP.NET_SessionId=dpoulrvrwk4dgeeo0z0bhgni; path=/; HttpOnly
+Referer: http://localhost:55183
+
+Action=getLotteryRecord&StartTime=2017-12-20&EndTime=2017-12-31&PageSize=20&PageIndex=0
+-----------------------------------------------------
+POST http://localhost:55183/api HTTP/1.1
+Host: localhost:55183
+Origin: http://localhost:55183
+Content-Type: application/x-www-form-urlencoded
+Accept: */*
+Cookie: ASP.NET_SessionId=dpoulrvrwk4dgeeo0z0bhgni; path=/; HttpOnly
+Referer: http://localhost:55183
+
+Action=setWordsManage&Type=add&content=Fuck&remark=粗?&state=1
+
+------------------------------------------------------
+POST http://localhost:55183/api HTTP/1.1
+Host: localhost:55183
+Origin: http://localhost:55183
+Content-Type: application/x-www-form-urlencoded
+Accept: */*
+Cookie: ASP.NET_SessionId=dpoulrvrwk4dgeeo0z0bhgni; path=/; HttpOnly
+Referer: http://localhost:55183
+
+Action=getDealerTimeList&state=0&Pagesize=20&Pageindex=0&StartTime=2017-11-01&EndTime=2017-12-31
+
+---------------managerEdit
+POST http://localhost:55183/api HTTP/1.1
+Host: localhost:55183
+Origin: http://localhost:55183
+Content-Type: application/x-www-form-urlencoded
+Accept: */*
+Cookie: ASP.NET_SessionId=dpoulrvrwk4dgeeo0z0bhgni; path=/; HttpOnly
+Referer: http://localhost:55183
+
+Action=ManagerEdit&Type=add&UserName=fuckit&Password=GGGG&RealName=LOLOLOL&AdminRole=3
+Action=ManagerEdit&Type=edit&id=39&Password=2222222&RealName=ASDASDASDASD&AdminRole=888
+
+------------------------------set role add
+
+POST http://localhost:55183/api HTTP/1.1
+Host: localhost:55183
+Origin: http://localhost:55183
+Content-Type: application/x-www-form-urlencoded
+Accept: */*
+Cookie: ASP.NET_SessionId=dpoulrvrwk4dgeeo0z0bhgni; path=/; HttpOnly
+Referer: http://localhost:55183
+
+Action=setRole&Type=add&name=接口測?&RoleList={"livecmsManage":"on","dealerManage":"on","dealerList":"on","dealerPost":"on","dealerTime":"on","liveManage":"on","videoList":"on","barrageManage":"on","systemBarrage":"on","systemFace":"on","safeWords":"on","specialWords":"on","whiteList":"on","blackList":"on","wordsManage":"on","manualReview":"on","giftManage":"on","giftList":"on","dealerTable":"on","Manager":"on","managerList":"off","roleManage":"off","manageLog":"off"}
+
+------------------------------set role edit
+
+POST http://localhost:55183/api HTTP/1.1
+Host: localhost:55183
+Origin: http://localhost:55183
+Content-Type: application/x-www-form-urlencoded
+Accept: */*
+Cookie: ASP.NET_SessionId=dpoulrvrwk4dgeeo0z0bhgni; path=/; HttpOnly
+Referer: http://localhost:55183
+
+Action=setRole&ID=3&Type=edit&name=接口測?&RoleList={"livecmsManage":"on","dealerManage":"on","dealerList":"on","dealerPost":"on","dealerTime":"on","liveManage":"off","videoList":"off","barrageManage":"on","systemBarrage":"on","systemFace":"on","safeWords":"on","specialWords":"on","whiteList":"on","blackList":"on","wordsManage":"on","manualReview":"on","giftManage":"on","giftList":"on","dealerTable":"on","Manager":"on","managerList":"on","roleManage":"on","manageLog":"on"}
+
+
+------------------------------managerIsLock
+
+POST http://localhost:55183/api HTTP/1.1
+Host: localhost:55183
+Origin: http://localhost:55183
+Content-Type: application/x-www-form-urlencoded
+Accept: */*
+Cookie: ASP.NET_SessionId=dpoulrvrwk4dgeeo0z0bhgni; path=/; HttpOnly
+Referer: http://localhost:55183
+
+Action=ManageisLock&ID=3&Status=0
+
+
+
+------------------------------荷官新增修改
+POST http://localhost:55183/api HTTP/1.1
+Host: localhost:55183
+Connection: keep-alive
+Content-Length: 95
+Origin: http://localhost:55183
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36
+Content-Type: application/x-www-form-urlencoded
+Accept: */*
+Cookie: ASP.NET_SessionId=dpoulrvrwk4dgeeo0z0bhgni; path=/; HttpOnly
+Referer: http://localhost:55183
+Accept-Encoding: gzip, deflate
+Accept-Language: zh-TW,zh;q=0.9,en-US;q=0.8,en;q=0.7
+
+Action=setDealer&ID=&Code=&Name=小希&Sex=0&Age=25&City=菲律賓&Height=165&BWH=20 36 25&Weight=49&Image=Dealer/Image/00000080.jpeg&Photo=Dealer/Photo/00000080.jpeg&Type=add
+Action=setDealer&ID=&Code=&Name=小希&Sex=0&Age=25&City=菲律賓&Height=165&BWH=20 36 25&Weight=49&Image=Dealer/Image/00000080.jpeg&Photo=Dealer/Photo/00000080.jpeg&Type=edit
+
+------------------------------
+POST http://localhost:55183/api HTTP/1.1
+Host: localhost:55183
+Connection: keep-alive
+Content-Length: 95
+Origin: http://localhost:55183
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36
+Content-Type: application/x-www-form-urlencoded
+Accept: */*
+Cookie: ASP.NET_SessionId=dpoulrvrwk4dgeeo0z0bhgni; path=/; HttpOnly
+Referer: http://localhost:55183
+Accept-Encoding: gzip, deflate
+Accept-Language: zh-TW,zh;q=0.9,en-US;q=0.8,en;q=0.7
+
+Action=ManagerEdit&ID=19&UserName=test20171204&Password=&RealName=978&AdminRole=8&Type=edit
+
+
+
+Action=setLiveSwitch&ID=5&Type=false&Time=2017-11-30 14:43:20
+
+
+
+Action=getLiveList
+
+Action=getLotteryRecord&Code=0001&StartTime=2017-11-01&EndTime=2017-12-01&PageSize=2&PageIndex=0
+
+
+Action=getLotteryRecord&Code=0001&StartTime=2017-11-01&EndTime=2017-12-01&PageSize=20&PageIndex=0
+
+
+------------------------------------------------------
+POST http://localhost:55183/api HTTP/1.1
+Host: localhost:55183
+Origin: http://localhost:55183
+Content-Type: application/x-www-form-urlencoded
+Accept: */*
+Cookie: ASP.NET_SessionId=dpoulrvrwk4dgeeo0z0bhgni; path=/; HttpOnly
+Referer: http://localhost:55183
+
+Action=setSystemBarrage&Content=ぃ琌眒布,琌盜规&Type=edit&ID=2
+
+
+Action=getSystemBarrageList&PageSize=20&PageIndex=0
+
+Action=getDealerTimeList&Code=&Name=&State=0&StartTime=2017-12-01&EndTime=2017-12-27&PageSize=20&PageIndex=0
+
+
+Action=getLotteryRecord&Code=0101&StartTime=2017-11-01&EndTime=2017-12-20&PageSize=20&PageIndex=0
+

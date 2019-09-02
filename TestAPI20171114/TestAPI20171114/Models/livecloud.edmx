@@ -1,0 +1,1119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="livecloudModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AnchorsClockLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LiveId" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="AnchorId" Type="int" Nullable="false" />
+          <Property Name="AddTime" Type="datetime" Nullable="false" />
+          <Property Name="Type" Type="tinyint" Nullable="false" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AnchorsWorkLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AnchorId" Type="int" Nullable="false" />
+          <Property Name="LiveId" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="StartTime" Type="datetime" Nullable="false" />
+          <Property Name="EndTime" Type="datetime" Nullable="false" />
+          <Property Name="Status" Type="tinyint" Nullable="false" />
+          <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AnchorsWorkTotal">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AnchorId" Type="int" Nullable="false" />
+          <Property Name="Year" Type="smallint" Nullable="false" />
+          <Property Name="Month" Type="smallint" Nullable="false" />
+          <Property Name="WorkSecond" Type="int" Nullable="false" />
+          <Property Name="LastProcessWorkLogId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ChatMessageBlockLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="UserNickName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="State" Type="int" Nullable="false" />
+          <Property Name="Content" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Time" Type="datetime" Nullable="false" />
+          <Property Name="BlockWords" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="dt_AdminBroadcastLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ManagerId" Type="int" Nullable="false" />
+          <Property Name="LiveId" Type="int" Nullable="false" />
+          <Property Name="SendTime" Type="datetime" Nullable="false" />
+          <Property Name="BroadcastText" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Status" Type="tinyint" Nullable="false" />
+          <Property Name="StartTime" Type="datetime" Nullable="false" />
+          <Property Name="EndTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="dt_AllowAccessIPList">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ip" Type="nvarchar" MaxLength="50" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="500" />
+          <Property Name="Enable" Type="bit" />
+          <Property Name="AddTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="dt_AnchorLiveStatus">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AnchorId" Type="int" Nullable="false" />
+          <Property Name="LiveId" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="StartTime" Type="datetime" Nullable="false" />
+          <Property Name="EndTime" Type="datetime" Nullable="false" />
+          <Property Name="Status" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="dt_BlackWords">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="content" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="state" Type="tinyint" Nullable="false" />
+          <Property Name="remark" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="addtime" Type="datetime" Nullable="false" />
+          <Property Name="updatetime" Type="datetime" Nullable="false" />
+          <Property Name="adminid" Type="int" Nullable="false" />
+          <Property Name="adminname" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="lockid" Type="timestamp" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="dt_dealer">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="dealerName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="area" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="age" Type="tinyint" Nullable="false" />
+          <Property Name="sex" Type="tinyint" Nullable="false" />
+          <Property Name="height" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="weight" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="bwh" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="img" Type="nvarchar" MaxLength="250" />
+          <Property Name="img2" Type="nvarchar" MaxLength="250" />
+          <Property Name="imgStr" Type="nvarchar" MaxLength="100" />
+          <Property Name="img2Str" Type="nvarchar" MaxLength="100" />
+          <Property Name="add_time" Type="datetime" Nullable="false" />
+          <Property Name="update_time" Type="datetime" Nullable="false" />
+          <Property Name="lockid" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <EntityType Name="dt_live">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="liveId" Type="nvarchar" MaxLength="4" />
+          <Property Name="liveName" Type="nvarchar" MaxLength="10" />
+          <Property Name="add_time" Type="datetime" />
+          <Property Name="update_time" Type="datetime" />
+          <Property Name="lockid" Type="timestamp" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="dt_liveList">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="code" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="tableId" Type="int" Nullable="false" />
+          <Property Name="liveId" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="dealerId" Type="int" Nullable="false" />
+          <Property Name="state" Type="tinyint" Nullable="false" />
+          <Property Name="stop_time" Type="nvarchar" MaxLength="20" />
+          <Property Name="add_time" Type="datetime" Nullable="false" />
+          <Property Name="update_time" Type="datetime" Nullable="false" />
+          <Property Name="oper" Type="tinyint" Nullable="false" />
+          <Property Name="lockid" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="CloseTitle" Type="nvarchar" MaxLength="100" />
+          <Property Name="CloseContent" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="dt_liveOpenRecord">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="code" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="tableId" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="liveId" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="dealerId" Type="int" Nullable="false" />
+          <Property Name="issueNo" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="state" Type="int" Nullable="false" />
+          <Property Name="openNum" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="startTime" Type="datetime" Nullable="false" />
+          <Property Name="endTime" Type="datetime" Nullable="false" />
+          <Property Name="add_time" Type="datetime" Nullable="false" />
+          <Property Name="lockid" Type="timestamp" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="dt_liveTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tableName" Type="nvarchar" MaxLength="10" />
+          <Property Name="add_time" Type="datetime" />
+          <Property Name="update_time" Type="datetime" />
+          <Property Name="lockid" Type="timestamp" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="dt_ManageLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ManagerId" Type="int" Nullable="false" />
+          <Property Name="ManagerName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ActionType" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="AddTime" Type="datetime" Nullable="false" />
+          <Property Name="Remarks" Type="nvarchar" MaxLength="1000" Nullable="false" />
+          <Property Name="IP" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="dt_Manager">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="admin_role" Type="int" Nullable="false" />
+          <Property Name="user_name" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="real_name" Type="varchar" MaxLength="50" />
+          <Property Name="add_time" Type="datetime" Nullable="false" />
+          <Property Name="lockid" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="Status" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="dt_ManagerRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LiveCmsManage" Type="bit" Nullable="false" />
+          <Property Name="DealerManage" Type="bit" Nullable="false" />
+          <Property Name="DealerList" Type="bit" Nullable="false" />
+          <Property Name="DealerPost" Type="bit" Nullable="false" />
+          <Property Name="DealerTime" Type="bit" Nullable="false" />
+          <Property Name="LiveManage" Type="bit" Nullable="false" />
+          <Property Name="VideoList" Type="bit" Nullable="false" />
+          <Property Name="BarrageManage" Type="bit" Nullable="false" />
+          <Property Name="SystemBarrage" Type="bit" Nullable="false" />
+          <Property Name="SentenceManage" Type="bit" Nullable="false" />
+          <Property Name="WordsManage" Type="bit" Nullable="false" />
+          <Property Name="ManualReview" Type="bit" Nullable="false" />
+          <Property Name="GiftManage" Type="bit" Nullable="false" />
+          <Property Name="GiftList" Type="bit" Nullable="false" />
+          <Property Name="DealerTable" Type="bit" Nullable="false" />
+          <Property Name="Manager" Type="bit" Nullable="false" />
+          <Property Name="ManagerList" Type="bit" Nullable="false" />
+          <Property Name="RoleManage" Type="bit" Nullable="false" />
+          <Property Name="ManageLog" Type="bit" Nullable="false" />
+          <Property Name="AddTime" Type="datetime" Nullable="false" />
+          <Property Name="ShieldedRecord" Type="bit" Nullable="false" />
+          <Property Name="LiveNotSpeak" Type="bit" Nullable="false" />
+          <Property Name="BlackWordManage" Type="bit" Nullable="false" />
+          <Property Name="RealTimeBarrage" Type="bit" Nullable="false" />
+          <Property Name="AllowIp" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="dt_ManualReview">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Content" Type="nvarchar" MaxLength="1000" Nullable="false" />
+          <Property Name="SensitiveWords" Type="nvarchar" MaxLength="1000" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="SendTime" Type="datetime" Nullable="false" />
+          <Property Name="AddTime" Type="datetime" Nullable="false" />
+          <Property Name="ManagerID" Type="int" Nullable="false" />
+          <Property Name="State" Type="tinyint" Nullable="false" />
+          <Property Name="UserNickName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Target" Type="nvarchar" MaxLength="50" />
+          <Property Name="GameID" Type="varchar" MaxLength="10" />
+          <Property Name="UserLevel" Type="int" />
+          <Property Name="IdentityId" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="dt_SensitiveSentences">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="content" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="state" Type="tinyint" Nullable="false" />
+          <Property Name="remark" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="addtime" Type="datetime" Nullable="false" />
+          <Property Name="updatetime" Type="datetime" Nullable="false" />
+          <Property Name="adminid" Type="int" Nullable="false" />
+          <Property Name="adminname" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="lockid" Type="timestamp" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="dt_SensitiveWords">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="content" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="state" Type="tinyint" Nullable="false" />
+          <Property Name="remark" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="addtime" Type="datetime" Nullable="false" />
+          <Property Name="updatetime" Type="datetime" Nullable="false" />
+          <Property Name="adminid" Type="int" Nullable="false" />
+          <Property Name="adminname" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="lockid" Type="timestamp" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="dt_SystemBarrage">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="content" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="state" Type="tinyint" Nullable="false" />
+          <Property Name="operUser" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="add_time" Type="datetime" Nullable="false" />
+          <Property Name="update_time" Type="datetime" Nullable="false" />
+          <Property Name="lockid" Type="timestamp" StoreGeneratedPattern="Computed" />
+          <Property Name="times" Type="int" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="dt_SystemBarrageLog">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="barrageId" Type="int" Nullable="false" />
+          <Property Name="operUser" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="add_time" Type="datetime" Nullable="false" />
+          <Property Name="lockid" Type="timestamp" StoreGeneratedPattern="Computed" />
+          <Property Name="signal" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="dt_SystemBarrageTimes">
+          <Key>
+            <PropertyRef Name="systembarrageid" />
+          </Key>
+          <Property Name="systembarrageid" Type="int" Nullable="false" />
+          <Property Name="times" Type="int" Nullable="false" />
+          <Property Name="updatetime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="dt_UserBarrageNoSpeak">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="identityid" Type="varchar" MaxLength="10" />
+          <Property Name="UserName" Type="varchar" MaxLength="30" />
+          <Property Name="UserNickName" Type="varchar" MaxLength="30" />
+          <Property Name="Remark" Type="varchar" MaxLength="100" />
+          <Property Name="Type" Type="int" />
+          <Property Name="Duration" Type="int" />
+          <Property Name="AddTime" Type="datetime" />
+          <Property Name="OperateUser" Type="varchar" MaxLength="30" />
+          <Property Name="lockid" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UsersBroadcastLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LiveId" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="BroadcastTime" Type="datetime" Nullable="false" />
+          <Property Name="Content" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="IsSystemDefaultChatMessage" Type="bit" Nullable="false" />
+          <Property Name="LiveChatMessagesId" Type="int" Nullable="false" />
+          <Property Name="Status" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="livecloudModelStoreContainer">
+          <EntitySet Name="AnchorsClockLog" EntityType="Self.AnchorsClockLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AnchorsWorkLog" EntityType="Self.AnchorsWorkLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AnchorsWorkTotal" EntityType="Self.AnchorsWorkTotal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ChatMessageBlockLog" EntityType="Self.ChatMessageBlockLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dt_AdminBroadcastLog" EntityType="Self.dt_AdminBroadcastLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dt_AllowAccessIPList" EntityType="Self.dt_AllowAccessIPList" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dt_AnchorLiveStatus" EntityType="Self.dt_AnchorLiveStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dt_BlackWords" EntityType="Self.dt_BlackWords" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dt_dealer" EntityType="Self.dt_dealer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dt_live" EntityType="Self.dt_live" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dt_liveList" EntityType="Self.dt_liveList" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dt_liveOpenRecord" EntityType="Self.dt_liveOpenRecord" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dt_liveTable" EntityType="Self.dt_liveTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dt_ManageLog" EntityType="Self.dt_ManageLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dt_Manager" EntityType="Self.dt_Manager" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dt_ManagerRole" EntityType="Self.dt_ManagerRole" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dt_ManualReview" EntityType="Self.dt_ManualReview" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dt_SensitiveSentences" EntityType="Self.dt_SensitiveSentences" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dt_SensitiveWords" EntityType="Self.dt_SensitiveWords" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dt_SystemBarrage" EntityType="Self.dt_SystemBarrage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dt_SystemBarrageLog" EntityType="Self.dt_SystemBarrageLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dt_SystemBarrageTimes" EntityType="Self.dt_SystemBarrageTimes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="dt_UserBarrageNoSpeak" EntityType="Self.dt_UserBarrageNoSpeak" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UsersBroadcastLog" EntityType="Self.UsersBroadcastLog" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="livecloudModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="livecloudEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AnchorsClockLog" EntityType="livecloudModel.AnchorsClockLog" />
+          <EntitySet Name="AnchorsWorkLog" EntityType="livecloudModel.AnchorsWorkLog" />
+          <EntitySet Name="AnchorsWorkTotal" EntityType="livecloudModel.AnchorsWorkTotal" />
+          <EntitySet Name="dt_AdminBroadcastLog" EntityType="livecloudModel.dt_AdminBroadcastLog" />
+          <EntitySet Name="dt_AnchorLiveStatus" EntityType="livecloudModel.dt_AnchorLiveStatus" />
+          <EntitySet Name="dt_dealer" EntityType="livecloudModel.dt_dealer" />
+          <EntitySet Name="dt_live" EntityType="livecloudModel.dt_live" />
+          <EntitySet Name="dt_liveList" EntityType="livecloudModel.dt_liveList" />
+          <EntitySet Name="dt_liveOpenRecord" EntityType="livecloudModel.dt_liveOpenRecord" />
+          <EntitySet Name="dt_liveTable" EntityType="livecloudModel.dt_liveTable" />
+          <EntitySet Name="dt_ManageLog" EntityType="livecloudModel.dt_ManageLog" />
+          <EntitySet Name="dt_Manager" EntityType="livecloudModel.dt_Manager" />
+          <EntitySet Name="dt_ManualReview" EntityType="livecloudModel.dt_ManualReview" />
+          <EntitySet Name="dt_SensitiveSentences" EntityType="livecloudModel.dt_SensitiveSentences" />
+          <EntitySet Name="dt_SensitiveWords" EntityType="livecloudModel.dt_SensitiveWords" />
+          <EntitySet Name="dt_SystemBarrage" EntityType="livecloudModel.dt_SystemBarrage" />
+          <EntitySet Name="dt_SystemBarrageLog" EntityType="livecloudModel.dt_SystemBarrageLog" />
+          <EntitySet Name="UsersBroadcastLog" EntityType="livecloudModel.UsersBroadcastLog" />
+          <EntitySet Name="dt_SystemBarrageTimes" EntityType="livecloudModel.dt_SystemBarrageTimes" />
+          <EntitySet Name="ChatMessageBlockLog" EntityType="livecloudModel.ChatMessageBlockLog" />
+          <EntitySet Name="dt_ManagerRole" EntityType="livecloudModel.dt_ManagerRole" />
+          <EntitySet Name="dt_UserBarrageNoSpeak" EntityType="livecloudModel.dt_UserBarrageNoSpeak" />
+          <EntitySet Name="dt_BlackWords" EntityType="livecloudModel.dt_BlackWords" />
+          <EntitySet Name="dt_AllowAccessIPList" EntityType="livecloudModel.dt_AllowAccessIPList" />
+        </EntityContainer>
+        <EntityType Name="AnchorsClockLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LiveId" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AnchorId" Type="Int32" Nullable="false" />
+          <Property Name="AddTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Type" Type="Byte" Nullable="false" />
+          <Property Name="Remark" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="AnchorsWorkLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AnchorId" Type="Int32" Nullable="false" />
+          <Property Name="LiveId" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="StartTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EndTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Status" Type="Byte" Nullable="false" />
+          <Property Name="UpdateTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="AnchorsWorkTotal">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AnchorId" Type="Int32" Nullable="false" />
+          <Property Name="Year" Type="Int16" Nullable="false" />
+          <Property Name="Month" Type="Int16" Nullable="false" />
+          <Property Name="WorkSecond" Type="Int32" Nullable="false" />
+          <Property Name="LastProcessWorkLogId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="dt_AdminBroadcastLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ManagerId" Type="Int32" Nullable="false" />
+          <Property Name="LiveId" Type="Int32" Nullable="false" />
+          <Property Name="SendTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="BroadcastText" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Byte" Nullable="false" />
+          <Property Name="StartTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EndTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="dt_AnchorLiveStatus">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AnchorId" Type="Int32" Nullable="false" />
+          <Property Name="LiveId" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="StartTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EndTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Status" Type="Byte" Nullable="false" />
+        </EntityType>
+        <EntityType Name="dt_dealer">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="dealerName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="area" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="age" Type="Byte" Nullable="false" />
+          <Property Name="sex" Type="Byte" Nullable="false" />
+          <Property Name="height" Type="Decimal" Nullable="false" Precision="5" Scale="2" />
+          <Property Name="weight" Type="Decimal" Nullable="false" Precision="5" Scale="2" />
+          <Property Name="bwh" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="img" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="img2" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="imgStr" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="img2Str" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="add_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="update_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="lockid" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="dt_live">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="liveId" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="liveName" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="add_time" Type="DateTime" Precision="3" />
+          <Property Name="update_time" Type="DateTime" Precision="3" />
+          <Property Name="lockid" Type="Binary" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="dt_liveList">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="code" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="tableId" Type="Int32" Nullable="false" />
+          <Property Name="liveId" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="dealerId" Type="Int32" Nullable="false" />
+          <Property Name="state" Type="Byte" Nullable="false" />
+          <Property Name="stop_time" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="add_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="update_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="oper" Type="Byte" Nullable="false" />
+          <Property Name="lockid" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="CloseTitle" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CloseContent" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="dt_liveOpenRecord">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="code" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="tableId" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="liveId" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="dealerId" Type="Int32" Nullable="false" />
+          <Property Name="issueNo" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="state" Type="Int32" Nullable="false" />
+          <Property Name="openNum" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="startTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="endTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="add_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="lockid" Type="Binary" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="dt_liveTable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tableName" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="add_time" Type="DateTime" Precision="3" />
+          <Property Name="update_time" Type="DateTime" Precision="3" />
+          <Property Name="lockid" Type="Binary" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="dt_ManageLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ManagerId" Type="Int32" Nullable="false" />
+          <Property Name="ManagerName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ActionType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AddTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Remarks" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="IP" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="dt_Manager">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="admin_role" Type="Int32" Nullable="false" />
+          <Property Name="user_name" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="real_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="add_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="lockid" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="Status" Type="Byte" Nullable="false" />
+        </EntityType>
+        <EntityType Name="dt_ManualReview">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Content" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="SensitiveWords" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SendTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="AddTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ManagerID" Type="Int32" Nullable="false" />
+          <Property Name="State" Type="Byte" Nullable="false" />
+          <Property Name="UserNickName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Target" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GameID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="UserLevel" Type="Int32" />
+          <Property Name="IdentityId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="dt_SensitiveSentences">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="content" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="state" Type="Byte" Nullable="false" />
+          <Property Name="remark" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="addtime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="updatetime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="adminid" Type="Int32" Nullable="false" />
+          <Property Name="adminname" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="lockid" Type="Binary" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="dt_SensitiveWords">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="content" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="state" Type="Byte" Nullable="false" />
+          <Property Name="remark" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="addtime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="updatetime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="adminid" Type="Int32" Nullable="false" />
+          <Property Name="adminname" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="lockid" Type="Binary" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="dt_SystemBarrage">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="content" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="state" Type="Byte" Nullable="false" />
+          <Property Name="operUser" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="add_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="update_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="lockid" Type="Binary" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="times" Type="Int32" />
+          <Property Name="Remark" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="dt_SystemBarrageLog">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="barrageId" Type="Int32" Nullable="false" />
+          <Property Name="operUser" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="add_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="lockid" Type="Binary" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="signal" Type="Byte" />
+        </EntityType>
+        <EntityType Name="UsersBroadcastLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LiveId" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BroadcastTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Content" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="IsSystemDefaultChatMessage" Type="Boolean" Nullable="false" />
+          <Property Name="LiveChatMessagesId" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="Byte" Nullable="false" />
+        </EntityType>
+        <EntityType Name="dt_SystemBarrageTimes">
+          <Key>
+            <PropertyRef Name="systembarrageid" />
+          </Key>
+          <Property Name="systembarrageid" Type="Int32" Nullable="false" />
+          <Property Name="times" Type="Int32" Nullable="false" />
+          <Property Name="updatetime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="ChatMessageBlockLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="UserNickName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="Int32" Nullable="false" />
+          <Property Name="Content" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="BlockWords" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="dt_ManagerRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LiveCmsManage" Type="Boolean" Nullable="false" />
+          <Property Name="DealerManage" Type="Boolean" Nullable="false" />
+          <Property Name="DealerList" Type="Boolean" Nullable="false" />
+          <Property Name="DealerPost" Type="Boolean" Nullable="false" />
+          <Property Name="DealerTime" Type="Boolean" Nullable="false" />
+          <Property Name="LiveManage" Type="Boolean" Nullable="false" />
+          <Property Name="VideoList" Type="Boolean" Nullable="false" />
+          <Property Name="BarrageManage" Type="Boolean" Nullable="false" />
+          <Property Name="SystemBarrage" Type="Boolean" Nullable="false" />
+          <Property Name="SentenceManage" Type="Boolean" Nullable="false" />
+          <Property Name="WordsManage" Type="Boolean" Nullable="false" />
+          <Property Name="ManualReview" Type="Boolean" Nullable="false" />
+          <Property Name="GiftManage" Type="Boolean" Nullable="false" />
+          <Property Name="GiftList" Type="Boolean" Nullable="false" />
+          <Property Name="DealerTable" Type="Boolean" Nullable="false" />
+          <Property Name="Manager" Type="Boolean" Nullable="false" />
+          <Property Name="ManagerList" Type="Boolean" Nullable="false" />
+          <Property Name="RoleManage" Type="Boolean" Nullable="false" />
+          <Property Name="ManageLog" Type="Boolean" Nullable="false" />
+          <Property Name="AddTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ShieldedRecord" Type="Boolean" Nullable="false" />
+          <Property Name="LiveNotSpeak" Type="Boolean" Nullable="false" />
+          <Property Name="BlackWordManage" Type="Boolean" Nullable="false" />
+          <Property Name="RealTimeBarrage" Type="Boolean" Nullable="false" />
+          <Property Name="AllowIp" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="dt_UserBarrageNoSpeak">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="identityid" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="UserName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="UserNickName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Remark" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Type" Type="Int32" />
+          <Property Name="Duration" Type="Int32" />
+          <Property Name="AddTime" Type="DateTime" Precision="3" />
+          <Property Name="OperateUser" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="lockid" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="dt_BlackWords">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="content" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="state" Type="Byte" Nullable="false" />
+          <Property Name="remark" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="addtime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="updatetime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="adminid" Type="Int32" Nullable="false" />
+          <Property Name="adminname" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="lockid" Type="Binary" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="dt_AllowAccessIPList">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Enable" Type="Boolean" />
+          <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Ip" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AddTime" Type="DateTime" Precision="3" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="livecloudModelStoreContainer" CdmEntityContainer="livecloudEntities">
+          <EntitySetMapping Name="AnchorsClockLog">
+            <EntityTypeMapping TypeName="livecloudModel.AnchorsClockLog">
+              <MappingFragment StoreEntitySet="AnchorsClockLog">
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="AddTime" ColumnName="AddTime" />
+                <ScalarProperty Name="AnchorId" ColumnName="AnchorId" />
+                <ScalarProperty Name="LiveId" ColumnName="LiveId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AnchorsWorkLog">
+            <EntityTypeMapping TypeName="livecloudModel.AnchorsWorkLog">
+              <MappingFragment StoreEntitySet="AnchorsWorkLog">
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="LiveId" ColumnName="LiveId" />
+                <ScalarProperty Name="AnchorId" ColumnName="AnchorId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AnchorsWorkTotal">
+            <EntityTypeMapping TypeName="livecloudModel.AnchorsWorkTotal">
+              <MappingFragment StoreEntitySet="AnchorsWorkTotal">
+                <ScalarProperty Name="LastProcessWorkLogId" ColumnName="LastProcessWorkLogId" />
+                <ScalarProperty Name="WorkSecond" ColumnName="WorkSecond" />
+                <ScalarProperty Name="Month" ColumnName="Month" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="AnchorId" ColumnName="AnchorId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dt_AdminBroadcastLog">
+            <EntityTypeMapping TypeName="livecloudModel.dt_AdminBroadcastLog">
+              <MappingFragment StoreEntitySet="dt_AdminBroadcastLog">
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="BroadcastText" ColumnName="BroadcastText" />
+                <ScalarProperty Name="SendTime" ColumnName="SendTime" />
+                <ScalarProperty Name="LiveId" ColumnName="LiveId" />
+                <ScalarProperty Name="ManagerId" ColumnName="ManagerId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dt_AnchorLiveStatus">
+            <EntityTypeMapping TypeName="livecloudModel.dt_AnchorLiveStatus">
+              <MappingFragment StoreEntitySet="dt_AnchorLiveStatus">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="LiveId" ColumnName="LiveId" />
+                <ScalarProperty Name="AnchorId" ColumnName="AnchorId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dt_dealer">
+            <EntityTypeMapping TypeName="livecloudModel.dt_dealer">
+              <MappingFragment StoreEntitySet="dt_dealer">
+                <ScalarProperty Name="lockid" ColumnName="lockid" />
+                <ScalarProperty Name="update_time" ColumnName="update_time" />
+                <ScalarProperty Name="add_time" ColumnName="add_time" />
+                <ScalarProperty Name="img2Str" ColumnName="img2Str" />
+                <ScalarProperty Name="imgStr" ColumnName="imgStr" />
+                <ScalarProperty Name="img2" ColumnName="img2" />
+                <ScalarProperty Name="img" ColumnName="img" />
+                <ScalarProperty Name="bwh" ColumnName="bwh" />
+                <ScalarProperty Name="weight" ColumnName="weight" />
+                <ScalarProperty Name="height" ColumnName="height" />
+                <ScalarProperty Name="sex" ColumnName="sex" />
+                <ScalarProperty Name="age" ColumnName="age" />
+                <ScalarProperty Name="area" ColumnName="area" />
+                <ScalarProperty Name="dealerName" ColumnName="dealerName" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dt_live">
+            <EntityTypeMapping TypeName="livecloudModel.dt_live">
+              <MappingFragment StoreEntitySet="dt_live">
+                <ScalarProperty Name="lockid" ColumnName="lockid" />
+                <ScalarProperty Name="update_time" ColumnName="update_time" />
+                <ScalarProperty Name="add_time" ColumnName="add_time" />
+                <ScalarProperty Name="liveName" ColumnName="liveName" />
+                <ScalarProperty Name="liveId" ColumnName="liveId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dt_liveList">
+            <EntityTypeMapping TypeName="livecloudModel.dt_liveList">
+              <MappingFragment StoreEntitySet="dt_liveList">
+                <ScalarProperty Name="CloseContent" ColumnName="CloseContent" />
+                <ScalarProperty Name="CloseTitle" ColumnName="CloseTitle" />
+                <ScalarProperty Name="lockid" ColumnName="lockid" />
+                <ScalarProperty Name="oper" ColumnName="oper" />
+                <ScalarProperty Name="update_time" ColumnName="update_time" />
+                <ScalarProperty Name="add_time" ColumnName="add_time" />
+                <ScalarProperty Name="stop_time" ColumnName="stop_time" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="dealerId" ColumnName="dealerId" />
+                <ScalarProperty Name="liveId" ColumnName="liveId" />
+                <ScalarProperty Name="tableId" ColumnName="tableId" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dt_liveOpenRecord">
+            <EntityTypeMapping TypeName="livecloudModel.dt_liveOpenRecord">
+              <MappingFragment StoreEntitySet="dt_liveOpenRecord">
+                <ScalarProperty Name="lockid" ColumnName="lockid" />
+                <ScalarProperty Name="add_time" ColumnName="add_time" />
+                <ScalarProperty Name="endTime" ColumnName="endTime" />
+                <ScalarProperty Name="startTime" ColumnName="startTime" />
+                <ScalarProperty Name="openNum" ColumnName="openNum" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="issueNo" ColumnName="issueNo" />
+                <ScalarProperty Name="dealerId" ColumnName="dealerId" />
+                <ScalarProperty Name="liveId" ColumnName="liveId" />
+                <ScalarProperty Name="tableId" ColumnName="tableId" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dt_liveTable">
+            <EntityTypeMapping TypeName="livecloudModel.dt_liveTable">
+              <MappingFragment StoreEntitySet="dt_liveTable">
+                <ScalarProperty Name="lockid" ColumnName="lockid" />
+                <ScalarProperty Name="update_time" ColumnName="update_time" />
+                <ScalarProperty Name="add_time" ColumnName="add_time" />
+                <ScalarProperty Name="tableName" ColumnName="tableName" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dt_ManageLog">
+            <EntityTypeMapping TypeName="livecloudModel.dt_ManageLog">
+              <MappingFragment StoreEntitySet="dt_ManageLog">
+                <ScalarProperty Name="IP" ColumnName="IP" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="AddTime" ColumnName="AddTime" />
+                <ScalarProperty Name="ActionType" ColumnName="ActionType" />
+                <ScalarProperty Name="ManagerName" ColumnName="ManagerName" />
+                <ScalarProperty Name="ManagerId" ColumnName="ManagerId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dt_Manager">
+            <EntityTypeMapping TypeName="livecloudModel.dt_Manager">
+              <MappingFragment StoreEntitySet="dt_Manager">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="lockid" ColumnName="lockid" />
+                <ScalarProperty Name="add_time" ColumnName="add_time" />
+                <ScalarProperty Name="real_name" ColumnName="real_name" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="user_name" ColumnName="user_name" />
+                <ScalarProperty Name="admin_role" ColumnName="admin_role" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dt_ManualReview">
+            <EntityTypeMapping TypeName="livecloudModel.dt_ManualReview">
+              <MappingFragment StoreEntitySet="dt_ManualReview">
+                <ScalarProperty Name="IdentityId" ColumnName="IdentityId" />
+                <ScalarProperty Name="UserLevel" ColumnName="UserLevel" />
+                <ScalarProperty Name="GameID" ColumnName="GameID" />
+                <ScalarProperty Name="Target" ColumnName="Target" />
+                <ScalarProperty Name="UserNickName" ColumnName="UserNickName" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="ManagerID" ColumnName="ManagerID" />
+                <ScalarProperty Name="AddTime" ColumnName="AddTime" />
+                <ScalarProperty Name="SendTime" ColumnName="SendTime" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="SensitiveWords" ColumnName="SensitiveWords" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dt_SensitiveSentences">
+            <EntityTypeMapping TypeName="livecloudModel.dt_SensitiveSentences">
+              <MappingFragment StoreEntitySet="dt_SensitiveSentences">
+                <ScalarProperty Name="lockid" ColumnName="lockid" />
+                <ScalarProperty Name="adminname" ColumnName="adminname" />
+                <ScalarProperty Name="adminid" ColumnName="adminid" />
+                <ScalarProperty Name="updatetime" ColumnName="updatetime" />
+                <ScalarProperty Name="addtime" ColumnName="addtime" />
+                <ScalarProperty Name="remark" ColumnName="remark" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="content" ColumnName="content" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dt_SensitiveWords">
+            <EntityTypeMapping TypeName="livecloudModel.dt_SensitiveWords">
+              <MappingFragment StoreEntitySet="dt_SensitiveWords">
+                <ScalarProperty Name="lockid" ColumnName="lockid" />
+                <ScalarProperty Name="adminname" ColumnName="adminname" />
+                <ScalarProperty Name="adminid" ColumnName="adminid" />
+                <ScalarProperty Name="updatetime" ColumnName="updatetime" />
+                <ScalarProperty Name="addtime" ColumnName="addtime" />
+                <ScalarProperty Name="remark" ColumnName="remark" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="content" ColumnName="content" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dt_SystemBarrage">
+            <EntityTypeMapping TypeName="livecloudModel.dt_SystemBarrage">
+              <MappingFragment StoreEntitySet="dt_SystemBarrage">
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="times" ColumnName="times" />
+                <ScalarProperty Name="lockid" ColumnName="lockid" />
+                <ScalarProperty Name="update_time" ColumnName="update_time" />
+                <ScalarProperty Name="add_time" ColumnName="add_time" />
+                <ScalarProperty Name="operUser" ColumnName="operUser" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="content" ColumnName="content" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dt_SystemBarrageLog">
+            <EntityTypeMapping TypeName="livecloudModel.dt_SystemBarrageLog">
+              <MappingFragment StoreEntitySet="dt_SystemBarrageLog">
+                <ScalarProperty Name="signal" ColumnName="signal" />
+                <ScalarProperty Name="lockid" ColumnName="lockid" />
+                <ScalarProperty Name="add_time" ColumnName="add_time" />
+                <ScalarProperty Name="operUser" ColumnName="operUser" />
+                <ScalarProperty Name="barrageId" ColumnName="barrageId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UsersBroadcastLog">
+            <EntityTypeMapping TypeName="livecloudModel.UsersBroadcastLog">
+              <MappingFragment StoreEntitySet="UsersBroadcastLog">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="LiveChatMessagesId" ColumnName="LiveChatMessagesId" />
+                <ScalarProperty Name="IsSystemDefaultChatMessage" ColumnName="IsSystemDefaultChatMessage" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="BroadcastTime" ColumnName="BroadcastTime" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="LiveId" ColumnName="LiveId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dt_SystemBarrageTimes">
+            <EntityTypeMapping TypeName="livecloudModel.dt_SystemBarrageTimes">
+              <MappingFragment StoreEntitySet="dt_SystemBarrageTimes">
+                <ScalarProperty Name="updatetime" ColumnName="updatetime" />
+                <ScalarProperty Name="times" ColumnName="times" />
+                <ScalarProperty Name="systembarrageid" ColumnName="systembarrageid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChatMessageBlockLog">
+            <EntityTypeMapping TypeName="livecloudModel.ChatMessageBlockLog">
+              <MappingFragment StoreEntitySet="ChatMessageBlockLog">
+                <ScalarProperty Name="BlockWords" ColumnName="BlockWords" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="UserNickName" ColumnName="UserNickName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dt_ManagerRole">
+            <EntityTypeMapping TypeName="livecloudModel.dt_ManagerRole">
+              <MappingFragment StoreEntitySet="dt_ManagerRole">
+                <ScalarProperty Name="AllowIp" ColumnName="AllowIp" />
+                <ScalarProperty Name="RealTimeBarrage" ColumnName="RealTimeBarrage" />
+                <ScalarProperty Name="BlackWordManage" ColumnName="BlackWordManage" />
+                <ScalarProperty Name="LiveNotSpeak" ColumnName="LiveNotSpeak" />
+                <ScalarProperty Name="ShieldedRecord" ColumnName="ShieldedRecord" />
+                <ScalarProperty Name="AddTime" ColumnName="AddTime" />
+                <ScalarProperty Name="ManageLog" ColumnName="ManageLog" />
+                <ScalarProperty Name="RoleManage" ColumnName="RoleManage" />
+                <ScalarProperty Name="ManagerList" ColumnName="ManagerList" />
+                <ScalarProperty Name="Manager" ColumnName="Manager" />
+                <ScalarProperty Name="DealerTable" ColumnName="DealerTable" />
+                <ScalarProperty Name="GiftList" ColumnName="GiftList" />
+                <ScalarProperty Name="GiftManage" ColumnName="GiftManage" />
+                <ScalarProperty Name="ManualReview" ColumnName="ManualReview" />
+                <ScalarProperty Name="WordsManage" ColumnName="WordsManage" />
+                <ScalarProperty Name="SentenceManage" ColumnName="SentenceManage" />
+                <ScalarProperty Name="SystemBarrage" ColumnName="SystemBarrage" />
+                <ScalarProperty Name="BarrageManage" ColumnName="BarrageManage" />
+                <ScalarProperty Name="VideoList" ColumnName="VideoList" />
+                <ScalarProperty Name="LiveManage" ColumnName="LiveManage" />
+                <ScalarProperty Name="DealerTime" ColumnName="DealerTime" />
+                <ScalarProperty Name="DealerPost" ColumnName="DealerPost" />
+                <ScalarProperty Name="DealerList" ColumnName="DealerList" />
+                <ScalarProperty Name="DealerManage" ColumnName="DealerManage" />
+                <ScalarProperty Name="LiveCmsManage" ColumnName="LiveCmsManage" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dt_UserBarrageNoSpeak">
+            <EntityTypeMapping TypeName="livecloudModel.dt_UserBarrageNoSpeak">
+              <MappingFragment StoreEntitySet="dt_UserBarrageNoSpeak">
+                <ScalarProperty Name="lockid" ColumnName="lockid" />
+                <ScalarProperty Name="OperateUser" ColumnName="OperateUser" />
+                <ScalarProperty Name="AddTime" ColumnName="AddTime" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="UserNickName" ColumnName="UserNickName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="identityid" ColumnName="identityid" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dt_BlackWords">
+            <EntityTypeMapping TypeName="livecloudModel.dt_BlackWords">
+              <MappingFragment StoreEntitySet="dt_BlackWords">
+                <ScalarProperty Name="lockid" ColumnName="lockid" />
+                <ScalarProperty Name="adminname" ColumnName="adminname" />
+                <ScalarProperty Name="adminid" ColumnName="adminid" />
+                <ScalarProperty Name="updatetime" ColumnName="updatetime" />
+                <ScalarProperty Name="addtime" ColumnName="addtime" />
+                <ScalarProperty Name="remark" ColumnName="remark" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="content" ColumnName="content" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dt_AllowAccessIPList">
+            <EntityTypeMapping TypeName="livecloudModel.dt_AllowAccessIPList">
+              <MappingFragment StoreEntitySet="dt_AllowAccessIPList">
+                <ScalarProperty Name="AddTime" ColumnName="AddTime" />
+                <ScalarProperty Name="Ip" ColumnName="Ip" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="Enable" ColumnName="Enable" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="無" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
