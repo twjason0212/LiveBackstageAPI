@@ -249,6 +249,8 @@
           <Property Name="GameID" Type="varchar" MaxLength="10" />
           <Property Name="UserLevel" Type="int" />
           <Property Name="IdentityId" Type="varchar" MaxLength="20" />
+          <Property Name="Area" Type="varchar" MaxLength="50" />
+          <Property Name="Ip" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="dt_SensitiveSentences">
           <Key>
@@ -571,6 +573,8 @@
           <Property Name="GameID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="UserLevel" Type="Int32" />
           <Property Name="IdentityId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Area" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Ip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="dt_SensitiveSentences">
           <Key>
@@ -909,6 +913,8 @@
           <EntitySetMapping Name="dt_ManualReview">
             <EntityTypeMapping TypeName="livecloudModel.dt_ManualReview">
               <MappingFragment StoreEntitySet="dt_ManualReview">
+                <ScalarProperty Name="Ip" ColumnName="Ip" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
                 <ScalarProperty Name="IdentityId" ColumnName="IdentityId" />
                 <ScalarProperty Name="UserLevel" ColumnName="UserLevel" />
                 <ScalarProperty Name="GameID" ColumnName="GameID" />

@@ -98,7 +98,9 @@ namespace TestAPI20171114.Controllers
                                     ? (db.dt_Manager.Where(m => m.id == w.ManagerID).FirstOrDefault() != null ? db.dt_Manager.Where(m => m.id == w.ManagerID).First().user_name : "" )
                                     : "",
                         State = w.State,
-                        IdentityId = w.IdentityId
+                        IdentityId = w.IdentityId,
+                        Area = w.Area,
+                        Ip=w.Ip,
                     }).ToList();
                 }
 
