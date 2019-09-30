@@ -101,6 +101,8 @@ namespace TestAPI20171114.Controllers
                         IdentityId = w.IdentityId,
                         Area = w.Area,
                         Ip=w.Ip,
+                        IspDomain = w.IspDomain,
+
                     }).ToList();
                 }
 

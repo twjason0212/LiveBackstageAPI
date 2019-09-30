@@ -29,5 +29,6 @@ namespace TestAPI20171114.Models
         public string IdentityId { get; set; }
         public string Area { get; set; }
         public string Ip { get; set; }
+        public string IspDomain { get; set; }
     }
 }
