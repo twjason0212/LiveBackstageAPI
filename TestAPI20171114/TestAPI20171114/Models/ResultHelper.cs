@@ -29,7 +29,7 @@ namespace TestAPI20171114.Models
         ///  -6Ip限制
         /// </summary>
         public const int NotAllowIp = -6;
-        public const string NotAllowIpMsg = "該IP已被受限制，無法登入！";
+        public const string NotAllowIpMsg = "您的IP未绑定无法登陆";
 
         /// <summary>
         ///  0正常返回,且未登录
