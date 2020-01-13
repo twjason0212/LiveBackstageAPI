@@ -26,7 +26,7 @@ namespace TestAPI20171114.Controllers
                 if (managerId < 0)
                 {
                     // 缺少Log紀錄
-                    result.Code = ResultHelper.ParamFail;
+                    result.Code = ResultHelper.NotAuthorized;
                     result.StrCode = ResultHelper.NotLoginMsg;
                     result.IsLogin = ResultHelper.NotLogin;
                     return result;
