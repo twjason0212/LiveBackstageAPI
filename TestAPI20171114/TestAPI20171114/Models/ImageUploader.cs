@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using TestAPI20171114.Models;
 
@@ -10,14 +11,14 @@ namespace TestAPI20171114.Models
     {
         public static string AnchorImageBaseUri = "Anchor/Image/";
 
-        public bool SaveToImageServer(string base64Data, string uriPath, out string fileName, string extension = "")
+        public string SaveToImageServer(string base64Data, string uriPath, string extension = "")
         {
             try
             {
-                var se = new ImageService.ImagesServiceSoapClient();
-                var myheader = new ImageService.MySoapHeader();
-                myheader.UserName = "dafaimguser";
-                myheader.UserPwd = "D62239525184C8256D1FC1556A990D14";
+                //var se = new ImageService.ImagesServiceSoapClient();
+                //var myheader = new ImageService.MySoapHeader();
+                //myheader.UserName = "dafaimguser";
+                //myheader.UserPwd = "D62239525184C8256D1FC1556A990D14";
 
                 //缺少正則檢查
 
@@ -30,16 +31,20 @@ namespace TestAPI20171114.Models
                         ? base64Data.Split(',')[0].Split('/')[1].Split(';')[0]
                         : "jpg";
 
-                fileName = Utils.GetMd5Hash(base64Data) + "." + extension;
+                //fileName = Utils.GetMd5Hash(base64Data) + "." + extension;
 
                 var imageBytes = Convert.FromBase64String(base64Data);
+                //var imageBytes = Convert.FromBase64String(img);
+
+                var fileName = UpdateMsg.SendImage(imageBytes);
+
 
                 //uriPath = "Anchor/Image/"
-                var saveUriPath = uriPath + fileName;
-                
-                var uploadSuccess = se.SaveFileForUU(myheader, imageBytes, imageBytes.Count(), saveUriPath);
+                //var saveUriPath = uriPath + fileName;
 
-                return uploadSuccess;
+                //var uploadSuccess = se.SaveFileForUU(myheader, imageBytes, imageBytes.Count(), saveUriPath);
+
+                return fileName;
             }
             catch (Exception ex)
             {

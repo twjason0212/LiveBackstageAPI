@@ -32,6 +32,14 @@ namespace TestAPI20171114.Models
             }
         }
 
+        public static string ImageUrl
+        {
+            get
+            {
+                return System.Configuration.ConfigurationManager.AppSettings["ImageUrl"] != "" ? System.Configuration.ConfigurationManager.AppSettings["ImageUrl"] : "";
+            }
+        }
+
         public static string SLCMFUrl
         {
             get

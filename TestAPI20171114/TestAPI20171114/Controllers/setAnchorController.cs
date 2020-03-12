@@ -9,6 +9,8 @@ using TestAPI20171114.Models;
 using TestAPI20171114.Common;
 using System.Security.Cryptography;
 using System.Text;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace TestAPI20171114.Controllers
 {
@@ -25,14 +27,14 @@ namespace TestAPI20171114.Controllers
             {
                 int managerId = (int)(session["ManagerId"] ?? -1);
 
-                if (managerId < 0)
-                {
-                    // 缺少Log紀錄
-                    result.Code = ResultHelper.NotAuthorized;
-                    result.StrCode = ResultHelper.NotLoginMsg;
-                    result.IsLogin = ResultHelper.NotLogin;
-                    return result;
-                }
+                //if (managerId < 0)
+                //{
+                //    // 缺少Log紀錄
+                //    result.Code = ResultHelper.NotAuthorized;
+                //    result.StrCode = ResultHelper.NotLoginMsg;
+                //    result.IsLogin = ResultHelper.NotLogin;
+                //    return result;
+                //}
 
                 var action = request.Form["Type"] ?? "";
 
@@ -107,14 +109,18 @@ namespace TestAPI20171114.Controllers
                 {
                     var imgUploader = new ImageUploader();
                     image = HttpUtility.UrlDecode(image.Split(',')[1].Trim()).Replace(" ", "+");
-                    imgUploader.SaveToImageServer(image, ImageUploader.AnchorImageBaseUri, out imgName);
+                    string jsonString = imgUploader.SaveToImageServer(image, ImageUploader.AnchorImageBaseUri);
+                    imgName = JsonConvert.DeserializeObject<ImgServicesResponse>(jsonString).data.FirstOrDefault();
                 }
                 if (photo.Split(',').Length > 1)
                 {
                     var imgUploader = new ImageUploader();
                     photo = HttpUtility.UrlDecode(photo.Split(',')[1].Trim()).Replace(" ", "+");
-                    imgUploader.SaveToImageServer(photo, ImageUploader.AnchorImageBaseUri, out photoName);
+                    string jsonString = imgUploader.SaveToImageServer(photo, ImageUploader.AnchorImageBaseUri);
+                    photoName = JsonConvert.DeserializeObject<ImgServicesResponse>(jsonString).data.FirstOrDefault();
                 }
+
+
 
 
                 using (var db = new livecloudEntities())
@@ -161,8 +167,8 @@ namespace TestAPI20171114.Controllers
                                     bwh = bwh,
                                     add_time = now,
                                     update_time = now,
-                                    img = "Anchor/Image/" + imgName,
-                                    img2 = "Anchor/Image/" + photoName,
+                                    img =  imgName,
+                                    img2 =  photoName,
                                     imgStr = imgName,
                                     img2Str = photoName
                                 };

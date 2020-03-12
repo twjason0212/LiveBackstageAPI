@@ -294,6 +294,7 @@
       <DependentUpon>livecloud.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ImageUploader.cs" />
+    <Compile Include="Models\ImgServicesResponse.cs" />
     <Compile Include="Models\livecloud.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
