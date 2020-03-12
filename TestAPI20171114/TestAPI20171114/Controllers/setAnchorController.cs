@@ -27,14 +27,14 @@ namespace TestAPI20171114.Controllers
             {
                 int managerId = (int)(session["ManagerId"] ?? -1);
 
-                //if (managerId < 0)
-                //{
-                //    // 缺少Log紀錄
-                //    result.Code = ResultHelper.NotAuthorized;
-                //    result.StrCode = ResultHelper.NotLoginMsg;
-                //    result.IsLogin = ResultHelper.NotLogin;
-                //    return result;
-                //}
+                if (managerId < 0)
+                {
+                    // 缺少Log紀錄
+                    result.Code = ResultHelper.NotAuthorized;
+                    result.StrCode = ResultHelper.NotLoginMsg;
+                    result.IsLogin = ResultHelper.NotLogin;
+                    return result;
+                }
 
                 var action = request.Form["Type"] ?? "";
 
