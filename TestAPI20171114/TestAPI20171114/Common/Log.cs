@@ -7,7 +7,7 @@ namespace TestAPI20171114.Common
 {
     public class Log
     {
-
+           
         private static object _ErrorLogLock = new object();
         private static string ErrorLogPath = Thread.GetDomain().BaseDirectory + "\\Log\\Error\\";
         private static void Error(string folder, string title, string text)
